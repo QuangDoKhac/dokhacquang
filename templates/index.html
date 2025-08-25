@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mushroom Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f6f6;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>🍄 Mushroom Prediction</h2>
+        <form method="POST">
+            <!-- Odor -->
+            <label for="odor">Mùi (odor):</label>
+            <select name="odor" id="odor" required>
+                <option value="a" {% if odor=="a" %}selected{% endif %}>Almond (hạnh nhân)</option>
+                <option value="l" {% if odor=="l" %}selected{% endif %}>Anise (hồi)</option>
+                <option value="c" {% if odor=="c" %}selected{% endif %}>Creosote</option>
+                <option value="y" {% if odor=="y" %}selected{% endif %}>Fishy (cá)</option>
+                <option value="f" {% if odor=="f" %}selected{% endif %}>Foul (hôi)</option>
+                <option value="m" {% if odor=="m" %}selected{% endif %}>Musty (mốc)</option>
+                <option value="n" {% if odor=="n" %}selected{% endif %}>None (không mùi)</option>
+                <option value="p" {% if odor=="p" %}selected{% endif %}>Pungent (cay)</option>
+                <option value="s" {% if odor=="s" %}selected{% endif %}>Spicy (cay nồng)</option>
+            </select>
+
+            <!-- Cap color -->
+            <label for="cap_color">Màu mũ nấm (cap-color):</label>
+            <select name="cap_color" id="cap_color" required>
+                <option value="n" {% if cap=="n" %}selected{% endif %}>Brown (nâu)</option>
+                <option value="b" {% if cap=="b" %}selected{% endif %}>Buff (be)</option>
+                <option value="c" {% if cap=="c" %}selected{% endif %}>Cinnamon (quế)</option>
+                <option value="g" {% if cap=="g" %}selected{% endif %}>Gray (xám)</option>
+                <option value="r" {% if cap=="r" %}selected{% endif %}>Green (xanh lục)</option>
+                <option value="p" {% if cap=="p" %}selected{% endif %}>Pink (hồng)</option>
+                <option value="u" {% if cap=="u" %}selected{% endif %}>Purple (tím)</option>
+                <option value="e" {% if cap=="e" %}selected{% endif %}>Red (đỏ)</option>
+                <option value="w" {% if cap=="w" %}selected{% endif %}>White (trắng)</option>
+                <option value="y" {% if cap=="y" %}selected{% endif %}>Yellow (vàng)</option>
+            </select>
+
+            <!-- Gill color -->
+            <label for="gill_color">Màu phiến nấm (gill-color):</label>
+            <select name="gill_color" id="gill_color" required>
+                <option value="k" {% if gill=="k" %}selected{% endif %}>Black (đen)</option>
+                <option value="n" {% if gill=="n" %}selected{% endif %}>Brown (nâu)</option>
+                <option value="b" {% if gill=="b" %}selected{% endif %}>Buff (be)</option>
+                <option value="h" {% if gill=="h" %}selected{% endif %}>Chocolate</option>
+                <option value="g" {% if gill=="g" %}selected{% endif %}>Gray (xám)</option>
+                <option value="r" {% if gill=="r" %}selected{% endif %}>Green (xanh lục)</option>
+                <option value="o" {% if gill=="o" %}selected{% endif %}>Orange (cam)</option>
+                <option value="p" {% if gill=="p" %}selected{% endif %}>Pink (hồng)</option>
+                <option value="u" {% if gill=="u" %}selected{% endif %}>Purple (tím)</option>
+                <option value="e" {% if gill=="e" %}selected{% endif %}>Red (đỏ)</option>
+                <option value="w" {% if gill=="w" %}selected{% endif %}>White (trắng)</option>
+                <option value="y" {% if gill=="y" %}selected{% endif %}>Yellow (vàng)</option>
+            </select>
+
+            <button type="submit">🔮 Dự đoán</button>
+        </form>
+
+        {% if result %}
+        <div class="result">{{ result }}</div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
